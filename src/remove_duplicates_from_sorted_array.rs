@@ -30,9 +30,3 @@ fn test2() {
     assert_eq!(len, 5);
     assert_eq!(nums, vec![0, 1, 2, 3, 4, 2, 2, 3, 3, 4]);
 }
-
-fn main() {
-    let mut nums = vec![1, 1, 2];
-    let len = Solution::remove_duplicates(&mut nums);
-    println!("len: {}, nums: {:?}", len, nums);
-}

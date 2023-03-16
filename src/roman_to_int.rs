@@ -1,7 +1,6 @@
 /// A solution to the Roman to Integer problem on leetcode.
 /// This solution is a bit more memory intensive (because if the use of enums),
 /// but is really well partitioned and should be easy to expand further upon.
-
 #[derive(PartialEq)]
 enum Roman {
     I,

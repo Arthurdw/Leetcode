@@ -50,7 +50,6 @@ impl Solution {
                     break;
                 }
             }
-
         }
 
         head.next.unwrap()
@@ -66,7 +65,8 @@ impl Solution {
     }
 }
 
-fn main() {
+#[test]
+fn test() {
     let mut list1 = Box::new(ListNode::new(1));
     list1.next = Some(Box::new(ListNode::new(2)));
     list1.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(4)));
@@ -75,7 +75,12 @@ fn main() {
     list2.next = Some(Box::new(ListNode::new(3)));
     list2.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(4)));
 
-    let out = Solution::merge_two_lists(Some(list1), Some(list2));
+    let mut out = Box::new(ListNode::new(1));
+    out.next = Some(Box::new(ListNode::new(1)));
+    out.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(2)));
+    out.next.as_mut().unwrap().next.as_mut().unwrap().next = Some(Box::new(ListNode::new(3)));
+    out.next.as_mut().unwrap().next.as_mut().unwrap().next.as_mut().unwrap().next = Some(Box::new(ListNode::new(4)));
+    out.next.as_mut().unwrap().next.as_mut().unwrap().next.as_mut().unwrap().next.as_mut().unwrap().next = Some(Box::new(ListNode::new(4)));
 
-    println!("{:?}", out);
+    assert_eq!(Solution::merge_two_lists(Some(list1), Some(list2)), Some(out));
 }
