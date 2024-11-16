@@ -8,10 +8,8 @@ impl Solution {
             return 0;
         }
 
-        let needle_bytes = needle.as_bytes();
-
         for (counter, window) in haystack.as_bytes().windows(needle.len()).enumerate() {
-            if window == needle_bytes {
+            if window == needle.as_bytes() {
                 return counter as i32;
             }
         }
@@ -41,5 +39,13 @@ mod tests {
     #[test]
     fn needle_empty() {
         assert_eq!(Solution::str_str("hello".to_string(), "".to_string()), 0);
+    }
+
+    #[test]
+    fn needle_longer_than_haystack() {
+        assert_eq!(
+            Solution::str_str("hello".to_string(), "helloo".to_string()),
+            -1
+        );
     }
 }

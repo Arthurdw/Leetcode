@@ -12,6 +12,10 @@ impl Solution {
             return 0;
         }
 
+        if needle.len() > haystack.len() {
+            return -1;
+        }
+
         let haystack_bytes = haystack.as_bytes();
         let needle_bytes = needle.as_bytes();
 
@@ -50,5 +54,13 @@ mod tests {
     #[test]
     fn needle_empty() {
         assert_eq!(Solution::str_str("hello".to_string(), "".to_string()), 0);
+    }
+
+    #[test]
+    fn needle_longer_than_haystack() {
+        assert_eq!(
+            Solution::str_str("hello".to_string(), "helloo".to_string()),
+            -1
+        );
     }
 }
